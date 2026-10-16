@@ -1,25 +1,41 @@
-# Secure-Coding-Review
+# Secure Coding Review
 
-A small Python and SQLite practice project reviewing SQL query construction.
+A Python and SQLite practice project reviewing a SQL injection risk and its remediation.
 
-## Purpose
+## Project overview
 
-This project demonstrates how building a SQL query by joining user input into a string can create a SQL injection risk, and how parameterized queries help prevent it.
+The original example builds a SQL query by joining a name value into the query string. This can allow input to change the query’s meaning. The corrected example uses a parameterized query.
 
-## Files
+## Review result
 
-- `insecure_original.py` — intentionally vulnerable example for review practice.
-- `app.py` — corrected example that uses a parameterized query and closes the database connection.
-- `review_notes.md` — review scope, finding, remediation, and limitations.
-- `Secure_Coding_Review_Report.docx` — report for the exercise.
-- `evidence/` — screenshots of the initial Bandit finding and follow-up scan.
+| Item | Result |
+|---|---|
+| Finding | SQL query assembled with string concatenation |
+| Tool | Bandit |
+| Initial result | B608 reported; medium severity, low confidence |
+| Remediation | Replaced string concatenation with a parameterized query |
+| Follow-up scan | Bandit reported no issues identified in the scanned file |
 
-## Static analysis
+A clean Bandit scan does not prove that an entire application is secure.
 
-The project was reviewed with Bandit. The initial scan flagged the dynamically constructed SQL query (B608). After changing it to use a parameterized query, the follow-up scan reported no issues identified.
+## Project files
 
-To run Bandit:
+- `insecure_original.py` — intentionally vulnerable sample used for review practice.
+- `app.py` — corrected sample using a parameterized query.
+- `review_notes.md` — scope, method, finding, remediation, and limitations.
+
+## Reproduce the scans
+
+In Kali, open a terminal in the project folder and activate your virtual environment:
 
 ```bash
+source .venv/bin/activate
+Run Bandit against the original and corrected files:
 python -m bandit insecure_original.py
 python -m bandit app.py
+Scope and limitations
+This was a small local learning exercise. No employer code, production service, external system, or real user data was reviewed. Bandit checks selected patterns and may miss issues outside its rules. This work is not a full application security audit.
+Author
+KELECHI HAPPINESS UZOMA
+Intern, CODEALPHA
+20 October 2026
