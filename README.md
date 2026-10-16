@@ -22,7 +22,8 @@ A clean Bandit scan does not prove that an entire application is secure.
 - `insecure_original.py` — intentionally vulnerable learning example.
 - `app.py` — corrected example using a parameterized query.
 - `review_notes.md` — scope, review method, finding, remediation, and limitations.
-
+- `Secure_Coding_Review_Report.docx` — full review report with the finding, fix, scan result, and limitations.
+  
 ## Run the scan in Kali
 
 From the project folder, create and activate a virtual environment, then install Bandit:
