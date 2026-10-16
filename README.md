@@ -41,6 +41,16 @@ python -m bandit insecure_original.py
 python -m bandit app.py
 ```
 
+## Scan evidence
+
+**Initial scan — Bandit reported B608**
+
+![Initial Bandit scan showing the SQL query finding](bandit-initial-finding.jpeg)
+
+**Follow-up scan — no issues identified**
+
+![Bandit rescan after the parameterized-query fix](bandit-clean-rescan2.jpeg)
+
 ## Scope and limitations
 
 This was a small local learning exercise. No employer code, production service, external system, or real user data was reviewed. Bandit checks selected patterns and may miss issues outside its rules. This exercise is not a full application security audit.
