@@ -31,11 +31,15 @@ In Kali, open a terminal in the project folder and activate your virtual environ
 ```bash
 source .venv/bin/activate
 
-**Run Bandit against the original and corrected files:**
+Run Bandit against the original and corrected files:
+
+
 python -m bandit insecure_original.py
 python -m bandit app.py
 
-**## Scope and limitations**
+Scope and limitations
+
+
 This was a small local learning exercise. No employer code, production service, external system, or real user data was reviewed. Bandit checks selected patterns and may miss issues outside its rules. This work is not a full application security audit.
 Author
 KELECHI HAPPINESS UZOMA
