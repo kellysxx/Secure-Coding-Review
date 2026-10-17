@@ -17,7 +17,7 @@ Reviewed a five-line local Python example with SQLite query construction. No pro
 - **Evidence:** Bandit reported B608 for a hardcoded SQL expression. The exercise screenshots show the initial finding.
 - **Risk:** If a value controlled by a user is joined into SQL text, crafted input may change the meaning of the query. Actual impact depends on the application context and database permissions.
 - **Recommendation:** Bind values with the database driver's parameter interface. Do not concatenate untrusted input into a query.
-- **Remediation:** The corrected `app.py` uses `WHERE name = ?` and passes `(name,)` separately to `execute()`. It also closes the connection when the lookup finishes.
+- **Remediation:** The corrected `app.py` uses `WHERE name = ?` and passes `(name,)` separately to `execute()`.The current sample does not show explicit connection cleanup; a production implementation should close the connection reliably, for example with a finally block or a context manager.
 - **Verification:** The follow-up Bandit screenshot reports “No issues identified.” This confirms no Bandit findings for the scanned file, not that the whole application is secure.
 
 ## Additional secure coding recommendations
